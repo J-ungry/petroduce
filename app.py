@@ -20,8 +20,19 @@ def boardlist():
         return render_template('boardlist.html')
     #그렇지 않은 경우 => 로그인 페이지로 이동
     else:
-        return {"message":"에러에러"}
+        return render_template('login.html')
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/userdetail')
+def userdetail():
+    return render_template('userdetail.html')
+
+@app.route("/contentlist")
+def contentlist():
+    return render_template('contentlist.html')
 
 if __name__ == '__main__':
     app.run()

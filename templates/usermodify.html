@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 정보 수정 페이지</title>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="{{url_for('static',filename='js/usermodify.js')}}"></script>
+</head>
+<body>
+
+        <input type="hidden" value="{{session['id']}}" name="nowid" id="nowid">
+        <input type="text" value="{{id}}" id="newid" name="newid">
+        <input type="text" value="" id="newpw" name="newpw">
+        <input type="text" value="{{name}}" id="newname" name="newname">
+
+        <input type="submit" value="회원 정보 수정" id="apibtn" onclick=getApi() >
+    </form>
+</body>
+</html>

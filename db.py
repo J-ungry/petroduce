@@ -19,6 +19,8 @@ def query_db(query,args=()):
     cursor = conn.cursor()
     cursor.execute(query,args)
     result = cursor.fetchall()
+    print('result',result)
+    conn.commit()
     cursor.close()
     conn.close()
 

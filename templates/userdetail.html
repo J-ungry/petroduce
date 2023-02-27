@@ -1,0 +1,21 @@
+{% block content %}
+
+
+    <div>user details</div>
+    <div>여기 들어오면 get 메소드로 내용 가져와서 뿌려줘야함</div>
+    <div>사용자 ID : {{session['id']}}</div>
+    <div>사용자 이름 : {{session['name']}}</div>
+
+    <div>
+        <form action="/api/user/{{session['id']}}" method="post">
+            <input type="submit" value="회원 정보 수정">
+        </form>
+        <form action="/api/user/{{session['id']}}" method="delete">
+            <input type="button" value="회원 탈퇴">
+        </form>
+
+
+    </div>
+
+
+{% endblock %}
