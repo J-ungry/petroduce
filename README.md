@@ -5,13 +5,22 @@
 pip3 install -r requirements.txt
 ```
 
+## DDL 파일 
+- petroduce.sql
+
+## config.py 설정
+```
+    MYSQL_HOST = '접속할 mysql server 주소'
+    MYSQL_USER = 'mysql ID'
+    MYSQL_PASSWORD = 'mysql PW'
+    MYSQL_DB = 'petroduce'
+```
+
 ## 프로젝트 실행
 ```
 python3 app.py
 ```
 
-## DDL 파일 
-- petroduce.sql
 
 ## API 소스코드
 - api.py
