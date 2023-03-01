@@ -40,7 +40,6 @@ $(document).ready(function(){
             body: JSON.stringify(data)
         }).then(res =>{
             if(res.status===200){
-                alert('수정 완료 !')
                 location.href = `/userdetail`
             }else if(res.status===400){
                 alert("수정 실패 !")

@@ -15,7 +15,7 @@ $(document).ready(function(){
         if(exptext.test(email)==false){
             alert("아이디를 이메일 형식으로 작성해주세요")
         } else if(regExpPw.test(inputPw.value)==false){
-            alert("비밀번호는 숫자, 특수문자, 영어 2자리 이상을 사용해주세요")
+            alert("비밀번호는 8자리이상, 영문 2자리이상 숫자, 특수문자를 사용해주세요")
         }else{
             data = {
                 id : inputId.value,

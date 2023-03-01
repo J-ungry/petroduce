@@ -114,7 +114,6 @@ $(document).ready(function(){
             body: JSON.stringify(data)
         }).then(res => {
             if(res.status===200){
-                alert("댓글 등록 완료")
                 location.href = `/content/${boardid.value}/${contentId.value}`
             }else if(res.status===400){
                 alert("생성 실패")

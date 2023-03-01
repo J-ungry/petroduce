@@ -55,7 +55,6 @@ $(document).ready(function(){
             body: JSON.stringify(data)
         }).then(res => {
             if(res.status===200){
-                alert("생성 완료 !")
                 location.href = '/boardlist';
             }else if(res.status===400){
                 alert("생성 실패 !")

@@ -57,7 +57,6 @@ $(document).ready(function(){
             body: JSON.stringify(data)
         }).then(res => {
             if(res.status===200){
-                alert("게시글 등록 성공!")
                 location.href =`/content/${boardId.value}`
             }else if(res.status===400){
                 alert("생성 실패")

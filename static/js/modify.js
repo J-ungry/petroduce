@@ -54,7 +54,6 @@ $(document).ready(function(){
             body: JSON.stringify(data)
         }).then(res => {
             if(res.status===200){
-                alert("수정 완료 !")
                 location.href = `/content/${boardid.value}/${contentId.value}`
             }else if(res.status===400){
                 alert("수정 실패 !")
@@ -77,7 +76,7 @@ $(document).ready(function(){
             method:'DELETE'
         }).then(res => {
             if(res.status===200){
-                alert('삭제 성공 !')
+                alert('삭제 완료')
                 location.href=`/content/${boardid.value}`
             }else if(res.status===400){
                 alert('삭제 실패 !')

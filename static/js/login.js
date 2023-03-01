@@ -19,7 +19,6 @@ $(document).ready(function(){
             body: JSON.stringify(data)
         }).then(res => {
             if (res.status === 200){
-                alert("로그인 완료")
                 location.href = '/boardlist';
             } else{
                 alert("로그인 실패")
