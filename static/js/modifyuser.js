@@ -9,7 +9,6 @@ $(document).ready(function(){
         const resp = await response.json()
         const res = resp['res']
 
-        console.log(res)
         userInfo.innerHTML = `<div class="modi-info">
         <label for="id">이메일(id)  </label>
         <span type="text" name="id" id="id">${res[0].USR_ID}</span></br>
@@ -41,7 +40,7 @@ $(document).ready(function(){
             body: JSON.stringify(data)
         }).then(res =>{
             if(res.status===200){
-                alert('수정 완료 데수 !')
+                alert('수정 완료 !')
                 location.href = `/userdetail`
             }else if(res.status===400){
                 alert("수정 실패 !")

@@ -1,6 +1,5 @@
 from flask import Flask, render_template,session,redirect,url_for
 from api import api_bp
-import os
 
 app = Flask(__name__)
 app.register_blueprint(api_bp)

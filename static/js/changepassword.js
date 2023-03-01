@@ -23,7 +23,6 @@ $(document).ready(function(){
                 },
                 body: JSON.stringify(data)
             }).then(res => {
-                console.log(res)
                 if(res.status===200){
                     alert("수정 완료 ! 다시 로그인하세요")
                     location.href = `/`

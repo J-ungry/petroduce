@@ -14,6 +14,7 @@
     {% if session['id'] %}
     <div class="nav">
       <div class="n-div">
+        <a class="board-list" href="/boardlist">게시판</a>
         <a class="username" href="/userdetail">{{session['id']}}</a>
         <a href="/logout">로그아웃</a>
       </div>
@@ -73,6 +74,13 @@
     </div>
 </body>
 <style>
+
+  .c-div{
+    display: flex;
+    /* border: 1px solid #000; */
+    width: 100%;
+    justify-content: space-between;
+  }
   .nav{
     border-bottom: 1px solid #4285F4;
     width: 100%;
@@ -84,13 +92,9 @@
     float: right;
     margin-right: 20px;
   }
-  .c-div{
-    display: flex;
-    /* border: 1px solid #000; */
-    width: 100%;
-    justify-content: space-between;
+  .board-list{
+    margin:20px;
   }
-
   .username{
     margin: 30px;
   }

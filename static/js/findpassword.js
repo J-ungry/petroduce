@@ -18,7 +18,6 @@ $(document).ready(function(){
             },
             body: JSON.stringify(data)
         }).then(res => {
-            console.log(res)
             if(res.status === 200){
                 location.href=`/changepassword/${userid.value}`
             }else if(res.status ===400){

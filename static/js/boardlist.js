@@ -11,7 +11,6 @@ $(document).ready(function(){
     const boardList = document.getElementById('boardlist')
     const boardTable = document.getElementById('boardTable')
 
-    console.log("work")
     // 게시판 목록 출력하기
     async function callBoard(){
         const response = await fetch(`/api/board`,{method:"GET"})
@@ -19,13 +18,11 @@ $(document).ready(function(){
         const res = resp['res']
 
         if(res.length ===0 ){
-            console.log('work')
             let div = document.createElement('div');
             div.innerHTML = "게시판이 없습니다 !"
             boardList.appendChild(div)
         } else{
             for(i=0;i<res.length;i++){
-                console.log(res[i])
                 let tr = document.createElement('tr');
                 tr.innerHTML = `<th scope="row" boardId="${res[i].boardId}"><button id=${res[i].IDX} class="btn" onClick="location.href='/content/${res[i].IDX}'">${res[i].TITLE}</button></th>`
 
@@ -36,7 +33,6 @@ $(document).ready(function(){
                 
                 tr.appendChild(td2)
                 tr.appendChild(td3)
-                console.log(tr)
                 boardTable.appendChild(tr)
             }
         }
@@ -56,7 +52,6 @@ $(document).ready(function(){
             id:id.innerText,
             boardName:boardName.value
         }
-        console.log(boardName.value)
 
         await fetch(`/api/board`,{
             method:"POST",
@@ -65,7 +60,6 @@ $(document).ready(function(){
             },
             body: JSON.stringify(data)
         }).then(res => {
-            console.log(res)
             if(res.status===200){
                 alert("생성 완료 !")
                 location.href = '/boardlist';

@@ -9,7 +9,6 @@
 // | contentText  | varchar(256) | YES  |     | NULL              |                   |
 // +--------------+--------------+------+-----+-------------------+-------------------+
 $(document).ready(function(){
-    console.log('hello')
     const contentList = document.getElementById('contentlist')
     const contentTable = document.getElementById('contentTable');
     const boardId = document.getElementById('boardid');
@@ -20,9 +19,7 @@ $(document).ready(function(){
         const resp = await response.json()
         const res = resp['res']
 
-        console.log(res)
         if(res.length ===0 ){
-            console.log('work')
             let div = document.createElement('div');
             div.innerHTML = "게시글이 없습니다 !"
             contentList.appendChild(div)
@@ -67,7 +64,6 @@ $(document).ready(function(){
             },
             body: JSON.stringify(data)
         }).then(res => {
-            console.log(res)
             if(res.status===200){
                 alert("게시글 등록 성공!")
                 location.href =`/content/${boardId.value}`

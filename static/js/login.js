@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    console.log('work')
     const inputId = document.getElementById('id')        //아이디 input
     const inputPw = document.getElementById('password')   //비밀번호 input
     
@@ -12,7 +11,6 @@ $(document).ready(function(){
             id : inputId.value,
             password : inputPw.value
         }
-        console.log("work!!!")
         await fetch(`/api/login`,{
             method:"POST",
             headers:{
@@ -21,7 +19,7 @@ $(document).ready(function(){
             body: JSON.stringify(data)
         }).then(res => {
             if (res.status === 200){
-                alert("로그인 완료 데수")
+                alert("로그인 완료")
                 location.href = '/boardlist';
             } else{
                 alert("로그인 실패")

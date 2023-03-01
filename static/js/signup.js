@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    console.log('work')
     const inputId = document.getElementById('id')        //아이디 input
     const inputPw = document.getElementById('password')   //비밀번호 input
     const inputName = document.getElementById('name')    //이름 input
@@ -25,7 +24,6 @@ $(document).ready(function(){
                 password : inputPw.value,
                 name: inputName.value
             }
-            console.log("work!!!")
             await fetch(`/api/signup`,{
                 method:"POST",
                 headers:{
@@ -34,8 +32,7 @@ $(document).ready(function(){
                 body: JSON.stringify(data)
             }).then(res => {
                 if (res.status === 200){
-                    console.log(res)
-                    alert("회원가입 완료 ! 로그인하세용 ")
+                    alert("회원가입 완료 ! 로그인하세요 ")
                     location.href = '/';
                 } else{
                     alert("동일한 아이디가 존재합니다")

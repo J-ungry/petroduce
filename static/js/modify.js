@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    console.log("work!!")
     const boardid = document.getElementById('boardid')
     const contentId = document.getElementById('contentId')
     const sessionId = document.getElementById('sessionId')
@@ -11,7 +10,6 @@ $(document).ready(function(){
         const resp = await response.json()
         const res = resp['res']
 
-        console.log(res)
         printContent.innerHTML = ` <div class="input-group flex-nowrap">
         <span class="input-group-text" id="addon-wrapping">제목</span>
         <input type="text" id ="contentTitle" name="contentTitle" class="form-control" aria-label="Username" aria-describedby="addon-wrapping" value="${res[0].TITLE}">

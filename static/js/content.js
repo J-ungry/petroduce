@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    console.log("work")
 
     const boardid = document.getElementById('boardid')
     const contentId = document.getElementById('contentId')
@@ -7,7 +6,6 @@ $(document).ready(function(){
     let printContent = document.getElementById('printContent')
     let comm = document.querySelector('#commentBox')
 
-    console.log(boardid)
     //게시글 출력하기
     async function callContentText(){
         const response = await fetch(`/api/content/${boardid.value}/${contentId.value}`,{method:'GET'})
@@ -35,7 +33,6 @@ $(document).ready(function(){
     </div>`
 
         if(sessionId.value === res[0].USR_ID){
-            console.log('work!!!')
 
             let div = document.createElement('div')
             div.setAttribute("class","buttons")
@@ -59,15 +56,12 @@ $(document).ready(function(){
         const response = await fetch(`/api/comment/${contentId.value}`,{method:'GET'})
         const resp = await response.json()
         const res = resp['res']
-        console.log(res)
         if(res.length===0){
-            console.log("res")
             comm.innerHTML = `<div>댓글이 없어용</div>`
         }else{
             for(i=0; i<res.length; i++){
 
                 if(sessionId.value===res[i].USR_ID){
-                    console.log("수정이 가능해요")
                     comm.innerHTML += ` <div>
                     <label for="commenttext">내용 : </label>
                     <span id="commenttext" name="commenttext">${res[i].TEXT}</span>
@@ -77,7 +71,6 @@ $(document).ready(function(){
                     <input type="button" class='btn btn-primary' value="삭제하기" id="commentDelete" name="">
                 </div>`
                 }else{
-                    console.log("수정이 안돼용")
                     comm.innerHTML+= ` <div>
                     <label for="commenttext">내용 : </label>
                     <span id="commenttext" name="commenttext">${res[i].TEXT}</span>
@@ -87,17 +80,13 @@ $(document).ready(function(){
                 }
             }
             
-            console.log('댓글이 있어용')
 
         }
     }
     callComment();
 
-    console.log(boardid.value)
-    console.log(contentId.value)
     //댓글 입력하기
     const inputCommentBtn = document.getElementById('inputCommentBtn')
-    console.log(inputCommentBtn)
 
     async function inputComment(){
         const commentText = document.getElementById('commentText')
@@ -113,7 +102,6 @@ $(document).ready(function(){
             },
             body: JSON.stringify(data)
         }).then(res => {
-            console.log(res)
             if(res.status===200){
                 alert("댓글 등록 완료")
                 location.href = `/content/${boardid.value}/${contentId.value}`
