@@ -62,20 +62,31 @@ $(document).ready(function(){
             for(i=0; i<res.length; i++){
 
                 if(sessionId.value===res[i].USR_ID){
-                    comm.innerHTML += ` <div>
-                    <label for="commenttext">내용 : </label>
-                    <span id="commenttext" name="commenttext">${res[i].TEXT}</span>
-                    <label for="commenttext">작성자 : </label>
-                    <span id="commenttext" name="commenttext">${res[i].USR_ID}</span>
-                    <input type="button" class='btn btn-primary' value="수정하기" id="commentModify" name="">
-                    <input type="button" class='btn btn-primary' value="삭제하기" id="commentDelete" name="">
+                    comm.innerHTML += ` <div class="comments">
+                    <div>
+                      <label for="commenttext">내용 : </label>
+                      <span id="commenttext" name="commenttext">${res[i].TEXT}</span>
+                      <label for="commenttext">작성자 : </label>
+                      <span id="commenttext" name="commenttext">${res[i].USR_ID}</span>
+                    </div>
+
+                    <div class="commentBtns">
+                      <i class="fa-solid fa-pen-to-square" id="commentModify"></i>
+                      <i class="fa-solid fa-trash" id="commentDelete"></i>
+                    </div>
+
                 </div>`
                 }else{
-                    comm.innerHTML+= ` <div>
-                    <label for="commenttext">내용 : </label>
-                    <span id="commenttext" name="commenttext">${res[i].TEXT}</span>
-                    <label for="commenttext">작성자 : </label>
-                    <span id="commenttext" name="commenttext">${res[i].USR_ID}</span>
+                    comm.innerHTML+= `<div class="comments">
+                    <div>
+                      <label for="commenttext">내용 : </label>
+                      <span id="commenttext" name="commenttext">${res[i].TEXT}</span>
+                      <label for="commenttext">작성자 : </label>
+                      <span id="commenttext" name="commenttext">${res[i].USR_ID}</span>
+                    </div>
+
+
+
                 </div>`
                 }
             }
@@ -91,9 +102,9 @@ $(document).ready(function(){
     async function inputComment(){
         const commentText = document.getElementById('commentText')
         data = {
-            CNT_IDX:contentId.value,
-            USR_ID:sessionId.value,
-            TEXT:commentText.value
+            idx:contentId.value,
+            id:sessionId.value,
+            text:commentText.value
         }
         await fetch(`/api/comment`,{
             method:"POST",

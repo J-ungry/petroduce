@@ -7,8 +7,8 @@ $(document).ready(function(){
         const username = document.getElementById('name');
 
         data = {
-            USR_ID:userid.value,
-            USR_NAME:username.value
+            id:userid.value,
+            name:username.value
         }
 
         await fetch(`/api/user/password`,{

@@ -1,7 +1,7 @@
-cryptography==39.0.1
-Flask==2.2.3
-Flask-RESTful==0.3.9
-Jinja2==3.1.2
-PyMySQL==1.0.2
-SQLAlchemy==2.0.4
-Werkzeug==2.2.3
+cryptography
+Flask
+Flask-RESTful
+Jinja2
+PyMySQL
+SQLAlchemy
+Werkzeug

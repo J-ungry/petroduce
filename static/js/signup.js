@@ -14,10 +14,8 @@ $(document).ready(function(){
 
         if(exptext.test(email)==false){
             alert("아이디를 이메일 형식으로 작성해주세요")
-            location.href = '/signup';
         } else if(regExpPw.test(inputPw.value)==false){
             alert("비밀번호는 숫자, 특수문자, 영어 2자리 이상을 사용해주세요")
-            location.href = '/signup';
         }else{
             data = {
                 id : inputId.value,
@@ -32,11 +30,10 @@ $(document).ready(function(){
                 body: JSON.stringify(data)
             }).then(res => {
                 if (res.status === 200){
-                    alert("회원가입 완료 ! 로그인하세요 ")
+                    alert("회원가입 완료")
                     location.href = '/';
                 } else{
                     alert("동일한 아이디가 존재합니다")
-                    location.href = '/signup';
                 }
             })
         }

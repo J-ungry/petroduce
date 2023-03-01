@@ -1,4 +1,3 @@
-//버튼 클릭 시 실행되게끔 (비번 유효성 검사)
 $(document).ready(function(){
     const newpwBtn = document.getElementById('newpwBtn')
     const id = document.getElementById('id')
@@ -9,11 +8,10 @@ $(document).ready(function(){
 
         if(regExpPw.test(newpw.value)==false){
             alert("비밀번호는 숫자, 특수문자, 영어 2자리 이상을 사용해주세요")
-            location.href=`/changepassword/${id.value}`
         }else{
             data = {
-                USR_PW : newpw.value,
-                USR_ID : id.value
+                pw : newpw.value,
+                id : id.value
             }
 
             await fetch(`/api/user/password`,{

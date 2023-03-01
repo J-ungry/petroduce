@@ -1,19 +1,10 @@
-// +--------------+--------------+------+-----+-------------------+-------------------+
-// | Field        | Type         | Null | Key | Default           | Extra             |
-// +--------------+--------------+------+-----+-------------------+-------------------+
-// | boardid      | int          | YES  | MUL | NULL              |                   |
-// | id           | varchar(50)  | NO   | MUL | NULL              |                   |
-// | contentId    | int          | NO   | PRI | NULL              | auto_increment    |
-// | contentData  | datetime     | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
-// | contentTitle | varchar(256) | YES  |     | NULL              |                   |
-// | contentText  | varchar(256) | YES  |     | NULL              |                   |
-// +--------------+--------------+------+-----+-------------------+-------------------+
 $(document).ready(function(){
     const contentList = document.getElementById('contentlist')
     const contentTable = document.getElementById('contentTable');
     const boardId = document.getElementById('boardid');
+    const tablebody = document.getElementById('table-body');
 
-    //게시글 목록 출력하기
+    // 게시글 목록 출력하기
     async function callContent(){
         const response = await fetch(`/api/content/${boardId.value}`,{mehtod:'GET'})
         const resp = await response.json()
@@ -26,7 +17,8 @@ $(document).ready(function(){
         } else{
             for(i=0; i<res.length; i++){
                 let tr = document.createElement('tr')
-                tr.innerHTML = `<td><button id=${res[i].IDX} class='btn' onclick="location.href='/content/${boardId.value}/${res[i].IDX}'">${res[i].TITLE}</button></td>`
+                tr.setAttribute('onClick',`location.href='/content/${boardId.value}/${res[i].IDX}'`)
+                tr.innerHTML = `<td><button id=${res[i].IDX} class='btn'>${res[i].TITLE}</button></td>`
                 let td2 = document.createElement('td');
                 td2.innerHTML= res[i].RGS_TIME
                 let td3 = document.createElement('td');
@@ -35,7 +27,7 @@ $(document).ready(function(){
                 tr.appendChild(td2)
                 tr.appendChild(td3)
     
-                contentTable.appendChild(tr)
+                tablebody.appendChild(tr)
             }
         }
 

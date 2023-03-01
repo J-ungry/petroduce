@@ -1,15 +1,8 @@
-// +-----------+-------------+------+-----+-------------------+-------------------+
-// | Field     | Type        | Null | Key | Default           | Extra             |
-// +-----------+-------------+------+-----+-------------------+-------------------+
-// | boardId   | int         | NO   | PRI | NULL              | auto_increment    |
-// | id        | varchar(50) | NO   | MUL | NULL              |                   |
-// | boardName | varchar(50) | NO   |     | NULL              |                   |
-// | boardDate | datetime    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
-// +-----------+-------------+------+-----+-------------------+-------------------+
 $(document).ready(function(){
 
     const boardList = document.getElementById('boardlist')
     const boardTable = document.getElementById('boardTable')
+    const tablebody = document.getElementById('table-body');
 
     // 게시판 목록 출력하기
     async function callBoard(){
@@ -24,7 +17,8 @@ $(document).ready(function(){
         } else{
             for(i=0;i<res.length;i++){
                 let tr = document.createElement('tr');
-                tr.innerHTML = `<th scope="row" boardId="${res[i].boardId}"><button id=${res[i].IDX} class="btn" onClick="location.href='/content/${res[i].IDX}'">${res[i].TITLE}</button></th>`
+                tr.setAttribute('onClick',`location.href='/content/${res[i].IDX}'`)
+                tr.innerHTML = `<th scope="row" boardId="${res[i].boardId}"><button id=${res[i].IDX} class="btn">${res[i].TITLE}</button></th>`
 
                 let td2 = document.createElement('td');
                 td2.innerHTML = res[i].RGS_TIME
@@ -33,7 +27,7 @@ $(document).ready(function(){
                 
                 tr.appendChild(td2)
                 tr.appendChild(td3)
-                boardTable.appendChild(tr)
+                tablebody.appendChild(tr)
             }
         }
 

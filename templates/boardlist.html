@@ -15,7 +15,7 @@
     <div class="nav">
       <div class="n-div">
         <a class="board-list" href="/boardlist">게시판</a>
-        <a class="username" href="/detail">{{session['id']}}</a>
+        <a class="username" href="/userdetail">{{session['id']}}</a>
         <a href="/logout">로그아웃</a>
       </div>
 
@@ -62,12 +62,15 @@
 
 
         <div id="boardlist">
-            <table class="table" id="boardTable">
+            <table class="table table-hover" id="boardTable">
               <thead>
                 <th scope="col">제목</th>
                 <th scope="col">수정일</th>
                 <th scope="col">작성자</th>
               </thead>
+              <tbody id="table-body">
+
+              </tbody>
 
             </table>
         </div>
