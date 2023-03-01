@@ -11,7 +11,14 @@ app.config["SECRET_KEY"]="sdjisnoafsada"
 #시작하면 로그인 화면 출력
 @app.route('/')
 def login():
-    return render_template('login.html')
+    if session:
+        return redirect(url_for('boardlist'))
+    else:
+        return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    return render_template('logout.html')
 
 @app.route('/boardlist')
 def boardlist():
@@ -20,19 +27,39 @@ def boardlist():
         return render_template('boardlist.html')
     #그렇지 않은 경우 => 로그인 페이지로 이동
     else:
-        return render_template('login.html')
-
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
+        return {"message":"에러에러"}
 
 @app.route('/userdetail')
 def userdetail():
     return render_template('userdetail.html')
 
-@app.route("/contentlist")
-def contentlist():
-    return render_template('contentlist.html')
+@app.route('/user/<string:id>')
+def modifyUser(id):
+    return render_template('modifyuser.html',id=id)
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/findpassword')
+def findpassword():
+    return render_template('findpassword.html')
+
+@app.route('/changepassword/<string:id>')
+def changepassword(id):
+    return render_template('changepassword.html',id=id)
+
+@app.route('/content/<int:id>')
+def contentList(id):
+    return render_template('contentlist.html',id=id)
+
+@app.route('/content/<int:boardid>/<int:contentId>')
+def content(boardid,contentId):
+    return render_template('content.html',boardid=boardid,contentId=contentId)
+
+@app.route('/content/modify/<int:boardid>/<int:contentId>')
+def modifyContent(boardid,contentId):
+    return render_template('modify.html',boardid=boardid,contentId=contentId)
 
 if __name__ == '__main__':
     app.run()

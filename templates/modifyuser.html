@@ -4,33 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원 정보</title>
+    <title>회원 정보 수정</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="{{url_for('static',filename='js/userdetail.js')}}"></script>
+    <script src="{{url_for('static',filename='js/modifyuser.js')}}"></script>
 </head>
 <body>
+    <input type="hidden" value="{{session['id']}}" id ="sessionId">
     <div class="container">
         <div class="c-div">
+            <h2 class="title">회원 정보 수정 </h2>
+            <div id="userInfo">
 
-            <h2 class="title">회원 정보 </h2>
-            <div class="user-info">
-                <label for="id">이메일(ID)</label>
-                <span name="id">{{session['id']}}</span><br>
-            </div>
-            <div class="user-info">
-                <label for="name">이름 </label>
-                <span>{{session['name']}}</span><br>
+
+
             </div>
             <div class="buttons">
-                <input type="hidden" id="id" name="id" value="{{session['id']}}">
-                <input type="hidden" id="name" name="name" value="{{session['name']}}">
-                <input type="button" class="btn btn-primary" id="changepassword" value="비밀번호변경" onclick="location.href='/findpassword'">
-                <input type="button" class="btn btn-secondary" id="modifyUser" value="정보수정" onclick="location.href=`/user/{{session['id']}}`">
-                <input type="button" class="btn btn-danger" id="deleteUser" value="회원탈퇴">
+                <input type="submit" class='btn btn-primary' id="modifyUserBtn" value="정보 수정">
             </div>
-
         </div>
 
     </div>
@@ -40,24 +32,23 @@
     .container{
       /* border: 1px solid #000; */
       display: flex;
-      justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
     .c-div{
       border: 1px solid #4285F4;
-      text-align: center;
       width: 50%;
       margin: auto;
+      text-align: center;
     }
     .title{
       padding: 20px;
     }
-    .user-info{
+    .modi-info{
         padding:10px;
     }
     .buttons{
-        padding: 20px;
+        padding:20px;
     }
 </style>
 </html>

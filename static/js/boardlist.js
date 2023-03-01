@@ -1,41 +1,83 @@
-
+// +-----------+-------------+------+-----+-------------------+-------------------+
+// | Field     | Type        | Null | Key | Default           | Extra             |
+// +-----------+-------------+------+-----+-------------------+-------------------+
+// | boardId   | int         | NO   | PRI | NULL              | auto_increment    |
+// | id        | varchar(50) | NO   | MUL | NULL              |                   |
+// | boardName | varchar(50) | NO   |     | NULL              |                   |
+// | boardDate | datetime    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+// +-----------+-------------+------+-----+-------------------+-------------------+
 $(document).ready(function(){
-    console.log('work')
-    const boardTable = document.getElementById('boardlist')
-    const board = document.querySelector('#boardTable')
-    console.log(boardTable)
-    
-    
-    //게시판 목록 출력 함수
-    async function callBoardList(){
-        const response  = await fetch(`/api/board`)
-        const resp = await response.json();
-        console.log(resp)
-        
-        for(i=0; i<resp.length;i++){
-            console.log(resp[i].boardName)
-            let tr = document.createElement('tr');
-            tr.innerHTML = `<td onclick='location.href="/api/contentlist/${resp[i].boardId}"'>${resp[i].boardName}</td>`
 
-            // let td1 = document.createElement('td');
-            // td1.innerHTML = resp[i].boardname
-            // td1.onclick = `location.href="/api/content/${resp[i].boardid}"`
+    const boardList = document.getElementById('boardlist')
+    const boardTable = document.getElementById('boardTable')
 
-            let td2 = document.createElement('td');
-            td2.innerHTML = resp[i].boardDate
-            let td3 = document.createElement('td');
-            td3.innerHTML = resp[i].id
-    
-            // tr.appendChild(td1);
-            tr.appendChild(td2);
-            tr.appendChild(td3);
-    
-            console.log(tr)
-            boardTable.appendChild(tr);
-            
+    console.log("work")
+    // 게시판 목록 출력하기
+    async function callBoard(){
+        const response = await fetch(`/api/board`,{method:"GET"})
+        const resp = await response.json()
+        const res = resp['res']
+
+        if(res.length ===0 ){
+            console.log('work')
+            let div = document.createElement('div');
+            div.innerHTML = "게시판이 없습니다 !"
+            boardList.appendChild(div)
+        } else{
+            for(i=0;i<res.length;i++){
+                console.log(res[i])
+                let tr = document.createElement('tr');
+                tr.innerHTML = `<th scope="row" boardId="${res[i].boardId}"><button id=${res[i].IDX} class="btn" onClick="location.href='/content/${res[i].IDX}'">${res[i].TITLE}</button></th>`
+
+                let td2 = document.createElement('td');
+                td2.innerHTML = res[i].RGS_TIME
+                let td3 = document.createElement('td');
+                td3.innerHTML = res[i].USR_ID
+                
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                console.log(tr)
+                boardTable.appendChild(tr)
+            }
         }
-    }
-    
-    callBoardList();
-});
 
+        
+    }
+
+    // 게시판 추가하기 
+    callBoard();
+
+    const createBtn = document.getElementById('createBtn')
+    const boardName = document.getElementById('boardName') //보드이름
+    const id = document.getElementById('id') // 제작자 아이디
+
+    async function createBoard(){
+        data = {
+            id:id.innerText,
+            boardName:boardName.value
+        }
+        console.log(boardName.value)
+
+        await fetch(`/api/board`,{
+            method:"POST",
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res => {
+            console.log(res)
+            if(res.status===200){
+                alert("생성 완료 !")
+                location.href = '/boardlist';
+            }else if(res.status===400){
+                alert("생성 실패 !")
+                location.href = '/boardlist';
+            }
+        })
+    }
+
+    createBtn.onclick = function workCreate(){
+        createBoard()
+    }
+
+});
