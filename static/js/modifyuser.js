@@ -41,10 +41,10 @@ $(document).ready(function(){
         }).then(res =>{
             if(res.status===200){
                 alert('수정 완료 !')
-                location.href = `/userdetail`
+                location.href = `/detail`
             }else if(res.status===400){
                 alert("수정 실패 !")
-                location.href =`/userdetail`
+                location.href =`/detail`
             }
         })
     }
