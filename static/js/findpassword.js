@@ -19,10 +19,10 @@ $(document).ready(function(){
             body: JSON.stringify(data)
         }).then(res => {
             if(res.status === 200){
-                location.href=`/changepassword/${userid.value}`
+                location.href=`/password/2/${userid.value}`
             }else if(res.status ===400){
                 alert("이메일, 이름을 다시 확인해주세요")
-                location.href=`/findpassword`
+                location.href=`/password/1`
             }
         })
     }

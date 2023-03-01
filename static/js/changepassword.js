@@ -28,7 +28,7 @@ $(document).ready(function(){
                     location.href = `/`
                 }else if(res.status===400){
                     alert("수정 실패 !")
-                    // location.href=`/changepassword/${id.value}`
+                    location.href=`/password/2/${id.value}`
                 }
             })
         }

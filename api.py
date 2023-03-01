@@ -100,7 +100,7 @@ def modifyUser():
     except:
         return {"message":"회원정보 수정 실패 "},400
 
-#회원 정보 가져오기
+#회원 정보 가져오기 => 
 @api_bp.route("/user/<string:id>",methods=["GET"])
 def getUserInfo(id):
     sql = "SELECT * FROM USERS WHERE USR_ID=%s"

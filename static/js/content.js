@@ -39,7 +39,7 @@ $(document).ready(function(){
             let btn = document.createElement('input')
             btn.setAttribute("type","button")
             btn.setAttribute("class","btn btn-primary")
-            btn.setAttribute("onclick",`location.href='/content/modify/${boardid.value}/${contentId.value}'`)
+            btn.setAttribute("onclick",`location.href='/content/1/${boardid.value}/${contentId.value}'`)
             btn.setAttribute("value","수정하기")
 
             div.append(btn)

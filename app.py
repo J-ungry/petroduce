@@ -28,9 +28,9 @@ def boardlist():
     else:
         return {"message":"에러에러"}
 
-@app.route('/userdetail')
+@app.route('/detail')
 def userdetail():
-    return render_template('userdetail.html')
+    return render_template('detail.html')
 
 @app.route('/user/<string:id>')
 def modifyUser(id):
@@ -40,13 +40,6 @@ def modifyUser(id):
 def signup():
     return render_template('signup.html')
 
-@app.route('/findpassword')
-def findpassword():
-    return render_template('findpassword.html')
-
-@app.route('/changepassword/<string:id>')
-def changepassword(id):
-    return render_template('changepassword.html',id=id)
 
 @app.route('/content/<int:id>')
 def contentList(id):
@@ -56,9 +49,18 @@ def contentList(id):
 def content(boardid,contentId):
     return render_template('content.html',boardid=boardid,contentId=contentId)
 
-@app.route('/content/modify/<int:boardid>/<int:contentId>')
+@app.route('/content/1/<int:boardid>/<int:contentId>')
 def modifyContent(boardid,contentId):
     return render_template('modify.html',boardid=boardid,contentId=contentId)
+
+
+@app.route('/password/1')
+def findpassword():
+    return render_template('findpassword.html')
+
+@app.route('/password/2/<string:id>')
+def changepassword(id):
+    return render_template('changepassword.html',id=id)
 
 if __name__ == '__main__':
     app.run()

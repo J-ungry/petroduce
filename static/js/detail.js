@@ -13,7 +13,7 @@ $(document).ready(function(){
                 location.href=`/`
             }else if(res.status===400){
                 alert('회원 탈퇴에 실패했습니다')
-                location.href=`/userdetail`
+                location.href=`/detail`
             }
         })
     }
