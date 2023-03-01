@@ -10,11 +10,17 @@ pip3 install -r requirements.txt
 python3 app.py
 ```
 
+## DDL 파일 
+- petroduce.sql
+
+## API 소스코드
+- api.py
+
+
 ## 프로젝트 소개
 Exem Mission "애완견 커뮤니티 Petroduce"
 
 ### 개발 환경
-[version]
 - Python : 3.9.12
 - Framework : flask(2.2.3)
 - Database : MySQL(8.0.28)
